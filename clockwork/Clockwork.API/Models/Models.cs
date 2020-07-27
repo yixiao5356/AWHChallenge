@@ -22,4 +22,13 @@ namespace Clockwork.API.Models
         public string ClientIp { get; set; }
         public DateTime UTCTime { get; set; }
     }
+
+    public class TimeZoneInput
+    {
+        public string Zone { get; set; }
+        public TimeZoneInput()
+        {
+
+        }
+    }
 }

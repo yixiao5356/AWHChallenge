@@ -1,35 +1,30 @@
-﻿<script>
-function UserAction() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            let response = JSON.parse(this.responseText);
-            let localDateTime = response.time;
-            let UTC = response.utcTime;
-            let localDateTimeElement = document.createElement("p");
-            localDateTimeElement.id = "localDateTime";
-            localDateTimeElement.innerText = "Current local time is " + localDateTime;
-            let UTCElement = document.createElement("p");
-            UTCElement.id = "UTC";
-            UTCElement.innerText = "Current UTC time is " + UTC;
-            let output = document.getElementById("output");
-            output.appendChild(localDateTimeElement);
-            output.appendChild(UTCElement);
+﻿<script src="~/Scripts/JavaScript.js"></script>
+<link rel="stylesheet" href="~/Scripts/StyleSheet1.css" />
 
-            //document.getElementById("output").innerHTML = this.responseText;
-        }
-    };
-    //TODO: run clock work API first and change the locolhost number below to the specific number in your browser. Every machine since generating a different number. This problem should be mitigate once the API is support by a perminent server
-    xhttp.open("GET", "http://localhost:51336/api/currenttime", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send();
-
-}
-</script>
-
-<h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
+<body>
+    <div id="mainBox">
+        <h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
 
 
-<button type="submit" onclick="UserAction()">Get the time</button>
+        <button id="outputbutton" type="submit" onclick="UserAction()">Get the time</button>
+        <button id="dismissOutput" onclick="dismissOutput()" hidden>Dismiss</button>
+        <p id="output">
 
-<p id="output"></p>
+        </p>
+
+        <button id="databasebutton" type="submit" onclick="GetList()"> Show All Previous request</button>
+        <button id="dismissDBOutput" onclick="dismissDBOutput()" hidden>Dismiss</button>
+        <p id="databaseOutput"></p>
+
+        <button id="dateTimeWithTimeZone" type="submit" onclick="ShowInput()"> Get time with specific timezome</button>
+        <form id="timezoneInput" hidden>
+            <label for="timeZone">Select Time Zone Here:</label>
+            <select type="text" name="timeZone" id="timeZone" required></select>
+            <button id="timeZoneButton" type="submit" onclick="return GetZoneTime(this.form.timeZone.value)">Submit</button>
+            <button id=" timeZoneCollaps" onclick="TimeZoneCollapes()">Collapes</button>
+        </form>
+        <p id="timeZoneOutput"></p>
+    </div>
+</body>
+
+

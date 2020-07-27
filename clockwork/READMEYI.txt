@@ -1,1 +1,1 @@
-Check todo list before start debuging
+If this is the first time you run this program on this machine, follow the instruction here. Before you start debuging, please go to Clockwork.web/scripts/JavaScript.js and update the variable ApiString. To update it, Please run Clockwork.API, copy the URL, and paste it to ApiString. After doing so, you can run Clockwork.Web and all function should run properly. If you have any questions, please contact me at yixiao5356@gmail.com
