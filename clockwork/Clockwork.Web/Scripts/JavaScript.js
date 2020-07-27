@@ -116,18 +116,21 @@ function GetList() {
             dismiss.hidden = false;
             databaseOutput.innerText = "";
             for (let item of response) {
+                let singleAceess = document.createElement("div");
+                singleAceess.classList.add("accessBox");
                 let id = document.createElement("p");
                 id.innerText = "currentTimeQueryId: " + item.currentTimeQueryId;
-                databaseOutput.appendChild(id);
+                singleAceess.appendChild(id);
                 let time = document.createElement("p");
                 time.innerText = "time: " + item.time;
-                databaseOutput.appendChild(time);
+                singleAceess.appendChild(time);
                 let ip = document.createElement("p");
                 ip.innerText = "clientIp: " + item.clientIp;
-                databaseOutput.appendChild(ip);
+                singleAceess.appendChild(ip);
                 let utc = document.createElement("p");
                 utc.innerText = "utcTime: " + item.utcTime;
-                databaseOutput.appendChild(utc);
+                singleAceess.appendChild(utc);
+                databaseOutput.appendChild(singleAceess);
             }
 
 
@@ -146,9 +149,12 @@ function LocalDateTimeArranger(localDateTime, output) {
     let localTimeZone = TimeZoneGetter(localDateTime);
     let localDateTimeArticle = document.createElement("article");
     localDateTimeArticle.id = "localDateTime";
-    let greeting = document.createElement("h3");
-    greeting.innerText = TimelyGreeting(localTime) + ", Today's Date is:";
+    let greeting = document.createElement("h1");
+    greeting.innerText = TimelyGreeting(localTime) + ", ";
     localDateTimeArticle.appendChild(greeting);
+    let today = document.createElement("h3");
+    today.innerText = "Today's Date is:";
+    localDateTimeArticle.appendChild(today);
     let monthp = document.createElement("P");
     monthp.id = "localMonthAndDate";
     monthp.innerText = localDate[1] + ", " + localDate[2];
@@ -196,7 +202,7 @@ function UTCDateTimeArrager(UTC, output) {
     UTCArticle.appendChild(yearp);
     let timeIntro = document.createElement("h3");
     timeIntro.id = "timeIntro";
-    timeIntro.innerText = "current UTC time is:";
+    timeIntro.innerText = "Current UTC time is:";
     UTCArticle.appendChild(timeIntro);
     let timep = document.createElement("p");
     timep.id = "UTCTime";

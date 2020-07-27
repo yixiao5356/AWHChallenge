@@ -1,14 +1,12 @@
-﻿html{
-    height: 100%;
-}
+﻿
 body {
-    background-color: blue;
-    height: 900px;
+    background: url(./TimeBackgrounds_01.jpg);
 }
 #mainBox {
+    height: 90%;
     min-height: 900px;
     background-color: white;
-    margin: 20px 20px;
+    margin: 20px 300px;
     display: grid;
     grid-template-areas: 
         "h2" 
@@ -22,10 +20,9 @@ body {
         "timezoneInput" 
         "timeZoneOutput";
     grid-template-columns: 2fr;
-}
-h2{
-    justify-self:center;
-    grid-area:h2;
+    border: solid black 5px;
+    border-radius: 5%;
+    text-align:center;
 }
 
 button{
@@ -33,23 +30,45 @@ button{
     border: solid 3px black;
     font-size:larger;
     margin: 20px;
+    font-size:160%;
 }
 
 button:hover {
     background-color:yellow;
 }
 
+h2{
+    justify-self:center;
+    grid-area:h2;
+}
+#outputbutton {
+    grid-area: outputbutton;
+}
 #dismissOutput {
     grid-area: dismiss;
+}
+#output {
+    grid-area: output;
+    justify-self: center;
+}
+
+#databasebutton {
+    grid-area: databasebutton;
 }
 
 #dismissDBOutput {
     grid-area: dismissDB;
 }
 
-#timeZoneOutput {
-    grid-area: timeZoneOutput;
-    justify-self:center;
+#databaseOutput {
+    grid-area: database;
+    justify-self: center;
+    display:grid;
+    grid-row-gap: 2px;
+}
+
+.accessBox{
+    border: solid 1px black;
 }
 
 #dateTimeWithTimeZone {
@@ -58,23 +77,78 @@ button:hover {
 
 #timezoneInput {
     grid-area: timezoneInput;
+    justify-self: center;
+}
+
+#timeZoneOutput {
+    grid-area: timeZoneOutput;
     justify-self:center;
 }
 
-#outputbutton {
-    grid-area: outputbutton;
+@media only screen and (max-width: 1024px){
+    #mainBox {
+        min-height: 600px;
+        grid-template-areas: 
+            "h2" 
+            "dismiss" 
+            "output" 
+            "dismissDB" 
+            "database"
+            "timezoneInput" 
+            "timeZoneOutput"
+            "outputbutton" 
+            "databasebutton" 
+            "dateTimeWithTimeZone" ;
+        margin: 0px 0px;
+    }
+    #title{
+        margin: 5px 5px;
+        align-self:center;
+        justify-self:center;
+        text-align:center;
+    }
+    #dismissOutput {
+        grid-area: dismiss;
+        min-height: 0px;
+    }
+
+    #output {
+        grid-area: output;
+        justify-self: center;
+        min-height: 0px;
+    }
+    #dismissDBOutput {
+        grid-area: dismissDB;
+        min-height: 0px;
+    }
+
+    #databaseOutput {
+        grid-area: database;
+        justify-self: center;
+        display: grid;
+        grid-row-gap: 2px;
+        min-height: 0px;
+    }
+    #timezoneInput {
+        grid-area: timezoneInput;
+        justify-self: center;
+        min-height:0px;
+    }
+
+    #timeZoneOutput {
+        grid-area: timeZoneOutput;
+        justify-self: center;
+        min-height:0px;
+    }
 }
 
-#databasebutton {
-    grid-area: databasebutton;
-}
 
-#output {
-    grid-area: output;
-    justify-self: center;
-}
 
-#databaseOutput {
-    grid-area: database;
-    justify-self: center;
-}
+
+
+
+
+
+
+
+
